@@ -11,11 +11,13 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Setup Flutter
-        uses: flutter-actions/setup-flutter@v2
+      - name: Setup Flutter (稳定版)
+        uses: subosito/flutter-action@v2
         with:
-          # 关键修正：将 flutter-version 改为 version
-          version: "3.13.10"
+          # 推荐使用 channel 而不是具体版本，稳定性更高
+          channel: 'stable'
+          # 也可以直接指定一个更稳定的版本号
+          # flutter-version: '3.16.0'
 
       - name: Install system dependencies
         run: |
