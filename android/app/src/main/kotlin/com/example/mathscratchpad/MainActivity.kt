@@ -1,6 +1,6 @@
-package com.example.mathscratchpad
+package com.yourcompany.yourappname
 
 import io.flutter.embedding.android.FlutterActivity
 
-class MainActivity: FlutterActivity() {
+class MainActivity : FlutterActivity() {
 }
