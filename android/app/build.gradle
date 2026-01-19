@@ -1,31 +1,15 @@
-// android/app/build.gradle
-plugins {
-    id 'com.android.application'
-    id 'kotlin-android'
-}
-
 android {
-    namespace 'com.example.mathscratchpad'
-    compileSdk 34
-
+    compileSdkVersion 33  // 至少为 33
+    // ...
     defaultConfig {
-        applicationId "com.example.mathscratchpad"
-        minSdk 21
-        targetSdk 34
-        versionCode 1
-        versionName "1.0"
-    }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
-    }
-
-    kotlinOptions {
-        jvmTarget = '17'
+        // ...
+        targetSdkVersion 33  // 至少为 33
+        // ...
     }
 }
 
-dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.8.10"
+// 如果使用 Kotlin，确保版本不低于 1.7.10
+buildscript {
+    ext.kotlin_version = '1.7.10'
+    // ...
 }
