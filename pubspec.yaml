@@ -1,0 +1,15 @@
+name: math_scratch_pad
+description: A minimal infinite math scratch pad.
+publish_to: "none"
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+
+flutter:
+  uses-material-design: true
