@@ -1,30 +1,39 @@
-name: Build APK
+name: Build & Release Flutter APK
 
 on:
-  workflow_dispatch:
+  push:
+    tags:
+      - 'v*'
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
+      - name: 检出代码
+        uses: actions/checkout@v4
 
-      - name: Setup Flutter
-        uses: subosito/flutter-action@v2
+      - name: 配置 Flutter 环境
+        uses: flutter-actions/setup-flutter@v2
         with:
-          flutter-version: "3.13.10"
-          channel: "3.13.10"
+          flutter-version: '3.13.10'
 
-      - name: Get dependencies
+      - name: 下载依赖
         run: flutter pub get
 
-      - name: Build APK
+      - name: 构建 Release APK
         run: flutter build apk --release
 
-      - name: Upload APK
+      - name: 上传 APK 产物
         uses: actions/upload-artifact@v4
         with:
-          name: math_scratch_pad_apk
+          name: app-release.apk
           path: build/app/outputs/flutter-apk/app-release.apk
+
+      - name: 创建 GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: build/app/outputs/flutter-apk/app-release.apk
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
